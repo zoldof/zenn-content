@@ -1,0 +1,31 @@
+name: Inject Python Snippet
+
+on:
+  push:
+    paths:
+      - 'zenn-content/snippets/**/*.py'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Inject Snippet
+        run: |
+          python zenn-content/scripts/inject_snippet.py
+
+      - name: Commit and Push if Changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add zenn-content/articles/*.md
+          git diff --cached --quiet || git commit -m "Auto update article with new snippet"
+          git push
+          
