@@ -1,7 +1,7 @@
 from pathlib import Path
 
-md_path = Path("zenn-content/hello.md")
-snippet_path = Path("zenn-content/snippets/hello.py")
+md_path = Path("hello.md")
+snippet_path = Path("snippets/hello.py")
 
 with md_path.open() as f:
     content = f.read()
