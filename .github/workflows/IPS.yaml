@@ -1,0 +1,30 @@
+name: Inject Python Snippet
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Hello World (代わりに何か表示)
+        run: echo "Workflow is working!"
+
+      - name: Inject Snippet
+        run: |
+          python zenn-content/scripts/inject_snippet.py || echo "Script failed"
+
+      - name: Commit and Push if Changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add zenn-content
+          git diff --cached --quiet || git commit -m "Auto update article with new snippet"
+          git push || echo "No changes or push failed"
