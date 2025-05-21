@@ -1,8 +1,20 @@
 from pathlib import Path
+import os
 import re
+import sys
 
-md_path = Path("test.md")
-snippet_path = Path("snippets/hello.py")
+# 環境変数からMarkdownファイルのパスを取得
+target_md_path = os.environ.get("TARGET_MD")
+if not target_md_path:
+    print("環境変数 TARGET_MD が設定されていません", file=sys.stderr)
+    sys.exit(1)
+
+md_path = Path(target_md_path)
+snippet_path = Path(str(md_path).replace(".md", ".py"))  # ← .md → .py に変換して同名スニペットを推定
+
+if not md_path.exists() or not snippet_path.exists():
+    print(f"ファイルが見つかりません: {md_path=} {snippet_path=}", file=sys.stderr)
+    sys.exit(1)
 
 with md_path.open() as f:
     content = f.read()
