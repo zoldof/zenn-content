@@ -3,7 +3,7 @@ name: Inject Python Snippet
 on:
   push:
     paths:
-      - 'zenn-content/snippets/*.py'
+      - 'snippets/*.py'
 
 jobs:
   build:
@@ -19,13 +19,13 @@ jobs:
 
       - name: Inject Snippet
         run: |
-          python zenn-content/scripts/inject_snippet.py
+          python scripts/inject_snippet.py
 
       - name: Commit and Push if Changed
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add zenn-content/*.md
+          git add *.md
           git diff --cached --quiet || git commit -m "Auto update article with new snippet"
           git push
           
