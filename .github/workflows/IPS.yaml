@@ -18,8 +18,9 @@ jobs:
         run: echo "Workflow is working!"
 
       - name: Inject Snippet
+        working-directory: zenn-content
         run: |
-          python zenn-content/scripts/inject_snippet.py || echo "Script failed"
+          python scripts/inject_snippet.py || echo "Script failed"
 
       - name: Commit and Push if Changed
         run: |
