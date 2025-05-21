@@ -30,6 +30,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add zenn-content/test.md
+          git add test.md
           git diff --cached --quiet || git commit -m "Auto update article with new snippet"
           git push || echo "No changes or push failed"
