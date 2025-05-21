@@ -10,7 +10,7 @@ if not target_md_path:
     sys.exit(1)
 
 md_path = Path(target_md_path)
-snippet_path = Path(str(md_path).replace(".md", ".py"))  # ← .md → .py に変換して同名スニペットを推定
+snippet_path = Path("snippets") / f"{md_path.stem}.py" # ← .md → .py に変換して同名スニペットを推定
 
 if not md_path.exists() or not snippet_path.exists():
     print(f"ファイルが見つかりません: {md_path=} {snippet_path=}", file=sys.stderr)
