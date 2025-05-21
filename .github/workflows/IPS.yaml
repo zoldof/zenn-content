@@ -14,7 +14,7 @@ jobs:
 
       - uses: actions/checkout@v3
         with:
-         path: zenn-content
+         path: repo
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -25,7 +25,7 @@ jobs:
         run: echo "Workflow is working!"
 
       - name: Inject Snippet
-        working-directory: zenn-content
+        working-directory: repo/zenn-content
         run: |
           python scripts/inject_snippet.py || echo "Script failed"
 
