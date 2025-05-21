@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 md_path = Path("hello.md")
 snippet_path = Path("snippets/hello.py")
