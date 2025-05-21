@@ -1,7 +1,7 @@
 from pathlib import Path
 import re
 
-md_path = Path("hello.md")
+md_path = Path("test.md")
 snippet_path = Path("snippets/hello.py")
 
 with md_path.open() as f:
