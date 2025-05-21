@@ -8,6 +8,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+         path: zenn-content
 
       - name: Set up Python
         uses: actions/setup-python@v4
