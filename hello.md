@@ -7,5 +7,7 @@ published: false      # ← 下書き状態にするために「false」
 ---
 
 ```python
-<!-- snippet:greet.py -->
+def main(name):
+    return f"ようこそ、{name}さん。今日もいいコード日和ですね。"
+
 ```
