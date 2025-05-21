@@ -3,7 +3,7 @@ name: Inject Python Snippet
 on:
   push:
     paths:
-      - 'zenn-content/snippets/**/*.py'
+      - 'zenn-content/snippets/*.py'
 
 jobs:
   build:
