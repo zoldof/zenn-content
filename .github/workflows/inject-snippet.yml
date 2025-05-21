@@ -6,20 +6,21 @@ on:
       - 'snippets/*.py'
 
 jobs:
-  build:
+  inject-snippet:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Inject Snippet
+      - name: Set target .md from latest .py
         run: |
-          python scripts/inject_snippet.py
+          LATEST_PY=$(ls -t snippets/*.py | head -n 1)
+          TARGET_MD="${LATEST_PY%.py}.md"
+          echo "TARGET_MD=$TARGET_MD" >> $GITHUB_ENV
+
+      - name: Inject Python Snippet
+        run: |
+          python scripts/inject_snippet.py "$TARGET_MD"
 
       - name: Commit and Push if Changed
         run: |
