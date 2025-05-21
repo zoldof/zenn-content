@@ -6,6 +6,6 @@ topics: ["python", "自動化"]
 published: false      # ← 下書き状態にするために「false」
 ---
 
-```python:
+```python
 <!-- snippet:greet.py -->
 ```
