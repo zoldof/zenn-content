@@ -15,7 +15,7 @@ jobs:
       - name: Set target .md from latest .py
         run: |
           LATEST_PY=$(ls -t snippets/*.py | head -n 1)
-          BASENAME=$(basename "$LATEST_PY" .py)
+          BASENAME=$(basename "$LATEST_PY" _*.py)
           TARGET_MD="${BASENAME}.md"
           echo "TARGET_MD=$TARGET_MD" >> $GITHUB_ENV
 
