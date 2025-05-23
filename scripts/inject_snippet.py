@@ -40,6 +40,7 @@ def replace_nth_code_block(content, codes):
         code_str = '''def main(name):
                         return f"ようこそ、{name}さん。今日もいいコード日和ですね。"
                         sss'''  # ← 構文エラー（未定義の sss）
+        print("渡されたコード:", repr(code_str))
         #code_str = code.strip()
         try:
             ast.parse(code_str)
