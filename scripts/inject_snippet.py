@@ -26,6 +26,8 @@ with md_path.open() as f:
 def replace_nth_code_block(content, codes):
     pattern = r'```python\n.*?\n```'
     matches = list(re.finditer(pattern, content, flags=re.DOTALL))
+    if len(codes) != len(matches):
+        print(f"警告: コードブロック数 {len(matches)} とスニペット数 {len(codes)} が一致しません", file=sys.stderr)
 
     result = []
     last_index = 0
