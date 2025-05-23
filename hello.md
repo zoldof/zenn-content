@@ -10,14 +10,3 @@ published: false      # ← 下書き状態にするために「false」
 def main(name):
     return f"ようこそ、{name}さん。今日もいいコード日和ですね。"
 ```
-
-```python
-test
-push
-add test
-```
-
-```python
-def main(name):
-    return f"ようこそ、{name}さん。今日もいいコード日和ですね。"
-```
