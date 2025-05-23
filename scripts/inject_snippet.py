@@ -1,7 +1,6 @@
 from pathlib import Path
 import os
 import re
-import ast
 import sys
 
 # 環境変数からMarkdownファイルのパスを取得
