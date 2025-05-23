@@ -35,7 +35,15 @@ def replace_nth_code_block(content, codes):
     for match, code in zip(matches, codes):
         start, end = match.span()
         result.append(content[last_index:start])  # 前の部分
-        result.append(f'```python\n{code.strip()}\n```')  # 差し替えコード
+
+        code_str = code.strip()
+        try:
+            ast.parse(code_str)
+        except SyntaxError as e:
+            print(f"構文エラー: 無効なPythonコードが検出されました\n{e}", file=sys.stderr)
+            sys.exit(1)
+
+        result.append(f'```python\n{code_str}\n```') # 差し替えコード
         last_index = end
 
     result.append(content[last_index:])  # 残りの部分を追加
