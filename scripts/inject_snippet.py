@@ -37,7 +37,10 @@ def replace_nth_code_block(content, codes):
         start, end = match.span()
         result.append(content[last_index:start])  # 前の部分
 
-        code_str = code.strip()
+        code_str = '''def main(name):
+                        return f"ようこそ、{name}さん。今日もいいコード日和ですね。"
+                        sss'''  # ← 構文エラー（未定義の sss）
+        #code_str = code.strip()
         try:
             ast.parse(code_str)
         except SyntaxError as e:
