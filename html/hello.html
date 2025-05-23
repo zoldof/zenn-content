@@ -8,8 +8,8 @@
       const pathParts = window.location.pathname.split('/');
       const currentRepo = pathParts[1];  // リポジトリ名（username.github.io/**ここ**/）
 
-      const encodedRepo = encodeURIComponent(currentRepo);
-      const encodedUI = encodeURIComponent('snippets/hello');
+      const encodedRepo = encodeURIComponent(currentRepo + '/snippets');
+      const encodedUI = encodeURIComponent('hello_01');
 
       const targetUrl = `https://zoldof.github.io/pyodide/pyodide_runner.html?repo=${encodedRepo}&ui=${encodedUI}`;
       window.location.href = targetUrl;
