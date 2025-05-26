@@ -1,27 +1,32 @@
-# scripts/inject_result.py
-
 import sys
-import builtins
 from io import StringIO
 from unittest.mock import patch
 
 md_path = sys.argv[1]
 py_path = sys.argv[2]
 
-# 出力をキャプチャ
+# 出力を捕捉するための設定
 output = StringIO()
+original_stdout = sys.stdout
 sys.stdout = output
 
-# input() のモック
-with patch('builtins.input', return_value='太郎'):
-    exec(open(py_path).read(), {})
+try:
+    namespace = {}
+    with open(py_path, encoding="utf-8") as f:
+        code = f.read()
+        exec(code, namespace)
 
-# 出力取得と戻す
-sys.stdout = sys.__stdout__
-result = output.getvalue()
+    if "main" in namespace:
+        result = namespace["main"]("太郎")
+        print(result)
+    else:
+        print("main 関数が見つかりません。")
 
-# Markdown に追記
-with open(md_path, "a") as f:
+finally:
+    sys.stdout = original_stdout
+
+# .md に追記
+with open(md_path, "a", encoding="utf-8") as f:
     f.write("\n---\n\n### 実行結果\n\n```text\n")
-    f.write(result)
-    f.write("```\n")
+    f.write(output.getvalue().strip())
+    f.write("\n```\n")
