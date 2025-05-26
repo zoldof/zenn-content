@@ -17,9 +17,8 @@ jobs:
           LATEST_PY=$(ls -t snippets/*.py | head -n 1)
           BASENAME=$(basename "$LATEST_PY" .py)
           TARGET_MD="${BASENAME%%_*}.md"
-          RUN_PY="${BASENAME}.py"
           echo "TARGET_MD=$TARGET_MD" >> $GITHUB_ENV
-          echo "RUN_PY=$RUN_PY" >> $GITHUB_ENV
+          echo "BASENAME=$BASENAME" >> $GITHUB_ENV
 
       - name: Inject Python Snippet
         run: |
