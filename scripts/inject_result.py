@@ -10,6 +10,11 @@ if not target_md_path:
     print("環境変数 TARGET_MD が設定されていません", file=sys.stderr)
     sys.exit(1)
 
+basename = os.environ.get("BASENAME")
+if not basename:
+    print("環境変数 BASENAME が設定されていません", file=sys.stderr)
+    sys.exit(1)
+
 def get_input_text(input_type: str) -> str | None:
     """対応する入力データを取得（あらかじめ定義しておく）"""
     predefined_inputs = {
@@ -56,9 +61,8 @@ def main():
     md_path = Path()
 
     for py_file in src_dir.glob("*.py"):
-        input_type = extract_input_type(py_file)
-        input_text = get_input_text(input_type) if input_type else None
-        output = run_python_file(py_file, input_text)
+        input_text = get_input_text(basename) if basename else None
+        output = run_python_file(basename, input_text)
 
         md_path = md_dir / (py_file.stem.split("_")[0] + ".md")
         if not md_path.exists():
