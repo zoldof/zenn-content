@@ -26,13 +26,24 @@ jobs:
 
       - name: Execute Python and inject result with mocked input
         run: |
-          OUTPUT=$(python -c "
-          import builtins
-          from unittest.mock import patch
+          OUTPUT=$(python - "$LATEST_PY" <<EOF
+            import sys
+            import builtins
+            from unittest.mock import patch
+            from io import StringIO
             
-          with patch('builtins.input', return_value='太郎'):
-              exec(open('$LATEST_PY').read())
-          ")
+            # 出力をキャプチャ
+            output = StringIO()
+            sys.stdout = output
+            
+            with patch('builtins.input', return_value='太郎'):
+                exec(open(sys.argv[1]).read(), {})
+            
+            sys.stdout = sys.__stdout__
+            print(output.getvalue())
+            EOF
+          )
+          
           echo -e '\n---\n\n### 実行結果\n\n```text\n'"$OUTPUT"'\n```' >> "$TARGET_MD"
 
       - name: Commit and Push if Changed
