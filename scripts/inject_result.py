@@ -31,15 +31,22 @@ try:
 finally:
     sys.stdout = original_stdout
 
-# Markdownファイルを読み込んで、指定ブロックを置き換え
+def replace_multiple_blocks(md_text, replacement_dict):
+    pattern = r"```(?P<block_id>[^\n]+)\n.*?\n```"
+
+    def replacer(match):
+        block_id = match.group("block_id")
+        content = replacement_dict.get(block_id)
+        if content is not None:
+            return f"```{block_id}\n{content.strip()}\n```"
+        return match.group(0)  # 対象外はそのまま残す
+
+    return re.sub(pattern, replacer, md_text, flags=re.DOTALL)
+
+replacements = {
+    input_block_id: input,
+    output_block_id: output.getvalue()
+}
 md_text = md_path.read_text(encoding="utf-8")
-pattern = rf"```{re.escape(input_block_id)}\n.*?\n```"
-replacement = f"```{input_block_id}\n{input}\n```"
-pre_md = re.sub(pattern, replacement, md_text, flags=re.DOTALL)
-
-pattern = rf"```{re.escape(output_block_id)}\n.*?\n```"
-replacement = f"```{output_block_id}\n{output.getvalue().strip()}\n```"
-new_md = re.sub(pattern, replacement, pre_md, flags=re.DOTALL)
-
-# 上書き保存
-md_path.write_text(new_md, encoding="utf-8")
+md_text = replace_multiple_blocks(md_text, replacements)
+md_path.write_text(md_text, encoding="utf-8")
