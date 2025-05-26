@@ -24,7 +24,7 @@ jobs:
       - name: Inject Python Snippet
         run: |
           python scripts/inject_snippet.py "$TARGET_MD"
-          python scripts/inject_result.py "$OUTPUT_PY"
+          python scripts/inject_result.py "$RUN_PY"
 
       - name: Commit and Push if Changed
         run: |
