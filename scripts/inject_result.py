@@ -7,8 +7,10 @@ import re
 basename = sys.argv[1]
 md_path = Path(sys.argv[2])
 py_path = Path(sys.argv[3])
-code_block_id = f"{basename}_out"
+input_block_id = f"{basename}_in"
+output_block_id = f"{basename}_out"
 
+input = "太郎"
 # 出力を捕捉するための設定
 output = StringIO()
 original_stdout = sys.stdout
@@ -21,13 +23,19 @@ try:
         exec(code, namespace)
 
     if "main" in namespace:
-        result = namespace["main"]("太郎")
+        result = namespace["main"](input)
         print(result)
     else:
         print("main 関数が見つかりません。")
 
 finally:
     sys.stdout = original_stdout
+
+# Markdownファイルを読み込んで、指定ブロックを置き換え
+md_text = md_path.read_text(encoding="utf-8")
+pattern = rf"```{re.escape(input_block_id)}\n.*?\n```"
+replacement = f"```{input_block_id}\n{input}\n```"
+new_md = re.sub(pattern, replacement, md_text, flags=re.DOTALL)
 
 # Markdownファイルを読み込んで、指定ブロックを置き換え
 md_text = md_path.read_text(encoding="utf-8")
