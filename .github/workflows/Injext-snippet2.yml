@@ -18,12 +18,22 @@ jobs:
           BASENAME=$(basename "$LATEST_PY" .py)
           TARGET_MD="${BASENAME%%_*}.md"
           echo "TARGET_MD=$TARGET_MD" >> $GITHUB_ENV
-          echo "BASENAME=$BASENAME" >> $GITHUB_ENV
+          echo "LATEST_PY=$LATEST_PY" >> $GITHUB_ENV
 
       - name: Inject Python Snippet
         run: |
           python scripts/inject_snippet.py "$TARGET_MD"
-          python scripts/inject_result.py "$RUN_PY"
+
+      - name: Execute Python and inject result with mocked input
+        run: |
+          OUTPUT=$(python -c "
+          import builtins
+          from unittest.mock import patch
+            
+          with patch('builtins.input', return_value='太郎'):
+              exec(open('$LATEST_PY').read())
+          ")
+          echo -e '\n---\n\n### 実行結果\n\n```text\n'"$OUTPUT"'\n```' >> "$TARGET_MD"
 
       - name: Commit and Push if Changed
         run: |
