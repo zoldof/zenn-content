@@ -35,11 +35,11 @@ finally:
 md_text = md_path.read_text(encoding="utf-8")
 pattern = rf"```{re.escape(input_block_id)}\n.*?\n```"
 replacement = f"```{input_block_id}\n{input}\n```"
-new_md = re.sub(pattern, replacement, md_text, flags=re.DOTALL)
+pre_md = re.sub(pattern, replacement, md_text, flags=re.DOTALL)
 
 pattern = rf"```{re.escape(output_block_id)}\n.*?\n```"
 replacement = f"```{output_block_id}\n{output.getvalue().strip()}\n```"
-new_md = re.sub(pattern, replacement, md_text, flags=re.DOTALL)
+new_md = re.sub(pattern, replacement, pre_md, flags=re.DOTALL)
 
 # 上書き保存
 md_path.write_text(new_md, encoding="utf-8")
