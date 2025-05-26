@@ -1,12 +1,14 @@
-import re
-import subprocess
 from pathlib import Path
+import os
+import re
+import sys
+import subprocess
 
-def extract_input_type(py_path: Path) -> str | None:
-    """# INPUT: xxx の形式を抽出"""
-    text = py_path.read_text(encoding='utf-8')
-    match = re.search(r'#\s*INPUT:\s*(\w+)', text)
-    return match.group(1) if match else None
+# 環境変数からMarkdownファイルのパスを取得
+target_md_path = os.environ.get("TARGET_MD")
+if not target_md_path:
+    print("環境変数 TARGET_MD が設定されていません", file=sys.stderr)
+    sys.exit(1)
 
 def get_input_text(input_type: str) -> str | None:
     """対応する入力データを取得（あらかじめ定義しておく）"""
@@ -50,7 +52,8 @@ def update_markdown(md_path: Path, output: str, input_type: str):
 
 def main():
     src_dir = Path("src")
-    md_dir = Path("docs")
+    md_dir = Path(target_md_path)
+    md_path = Path()
 
     for py_file in src_dir.glob("*.py"):
         input_type = extract_input_type(py_file)
