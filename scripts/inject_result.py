@@ -2,8 +2,9 @@ import sys
 from io import StringIO
 from unittest.mock import patch
 
-md_path = sys.argv[1]
-py_path = sys.argv[2]
+base_stem = sys.argv[1]
+md_path = sys.argv[2]
+py_path = sys.argv[3]
 
 # 出力を捕捉するための設定
 output = StringIO()
