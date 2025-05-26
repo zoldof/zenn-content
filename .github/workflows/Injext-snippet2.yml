@@ -26,7 +26,7 @@ jobs:
 
       - name: Execute Python and inject result with mocked input
         run: |
-          OUTPUT=$(python - "$LATEST_PY" <<EOF
+          OUTPUT=$(python - "$LATEST_PY" <<'EOF'
             import sys
             import builtins
             from unittest.mock import patch
