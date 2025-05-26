@@ -42,7 +42,7 @@ jobs:
             sys.stdout = sys.__stdout__
             print(output.getvalue())
             EOF
-          )
+            )
           
           echo -e '\n---\n\n### 実行結果\n\n```text\n'"$OUTPUT"'\n```' >> "$TARGET_MD"
 
