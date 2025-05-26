@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 import re
 import sys
-
+'''
 # 環境変数からMarkdownファイルのパスを取得
 target_md_path = os.environ.get("TARGET_MD")
 if not target_md_path:
@@ -11,6 +11,9 @@ if not target_md_path:
 
 md_path = Path(target_md_path)
 base_stem = md_path.stem  # 例: foo
+'''
+base_stem = sys.argv[1]
+md_path = sys.argv[2]
 
 # snippets/foo_1.py, foo_2.py, ... を探す
 snippet_files = sorted(Path("snippets").glob(f"{base_stem}_*.py"))
