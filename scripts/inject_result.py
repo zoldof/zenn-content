@@ -2,7 +2,7 @@ import sys
 from io import StringIO
 from unittest.mock import patch
 
-base_stem = sys.argv[1]
+basename = sys.argv[1]
 md_path = sys.argv[2]
 py_path = sys.argv[3]
 
