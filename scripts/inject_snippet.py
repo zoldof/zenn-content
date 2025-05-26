@@ -13,7 +13,7 @@ md_path = Path(target_md_path)
 base_stem = md_path.stem  # 例: foo
 '''
 base_stem = sys.argv[1]
-md_path = sys.argv[2]
+md_path = Path(sys.argv[2])
 
 # snippets/foo_1.py, foo_2.py, ... を探す
 snippet_files = sorted(Path("snippets").glob(f"{base_stem}_*.py"))
