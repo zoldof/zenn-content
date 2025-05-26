@@ -1,73 +1,27 @@
-from pathlib import Path
-import os
-import re
+# scripts/inject_result.py
+
 import sys
-import subprocess
+import builtins
+from io import StringIO
+from unittest.mock import patch
 
-# 環境変数からMarkdownファイルのパスを取得
-target_md_path = os.environ.get("TARGET_MD")
-if not target_md_path:
-    print("環境変数 TARGET_MD が設定されていません", file=sys.stderr)
-    sys.exit(1)
+md_path = sys.argv[1]
+py_path = sys.argv[2]
 
-basename = os.environ.get("BASENAME")
-if not basename:
-    print("環境変数 BASENAME が設定されていません", file=sys.stderr)
-    sys.exit(1)
+# 出力をキャプチャ
+output = StringIO()
+sys.stdout = output
 
-def get_input_text(input_type: str) -> str | None:
-    """対応する入力データを取得（あらかじめ定義しておく）"""
-    predefined_inputs = {
-        "hello_01": "Alice\n",
-        "time-culc": "12:00:00\n14:30:00\n",
-    }
-    return predefined_inputs.get(input_type)
+# input() のモック
+with patch('builtins.input', return_value='太郎'):
+    exec(open(py_path).read(), {})
 
-def run_python_file(py_path: Path, input_text: str = None) -> str:
-    """Pythonファイルを実行し、出力を取得"""
-    if input_text:
-        result = subprocess.run(
-            ['python', str(py_path)],
-            input=input_text.encode(),
-            capture_output=True,
-            text=True
-        )
-    else:
-        result = subprocess.run(
-            ['python', str(py_path)],
-            capture_output=True,
-            text=True
-        )
-    return result.stdout.strip()
+# 出力取得と戻す
+sys.stdout = sys.__stdout__
+result = output.getvalue()
 
-def update_markdown(md_path: Path, output: str, input_type: str):
-    """マークダウン内のoutput_xxブロックを置換"""
-    md_text = md_path.read_text(encoding='utf-8')
-    block_start = f"```{input_type}"
-    block_end = "```"
-
-    pattern = re.compile(
-        f"{re.escape(block_start)}.*?{re.escape(block_end)}",
-        re.DOTALL
-    )
-    new_block = f"{block_start}\n{output}\n{block_end}"
-    md_text = pattern.sub(new_block, md_text)
-
-    md_path.write_text(md_text, encoding='utf-8')
-
-def main():
-    src_dir = Path("src")
-    md_dir = Path(target_md_path)
-    md_path = Path()
-
-    for py_file in src_dir.glob("*.py"):
-        input_text = get_input_text(basename) if basename else None
-        output = run_python_file(basename, input_text)
-
-        md_path = md_dir / (py_file.stem.split("_")[0] + ".md")
-        if not md_path.exists():
-            print(f"スキップ: {md_path.name}（Markdownファイルが見つかりません）")
-            continue
-
-        update_markdown(md_path, output, input_type)
-        print(f"{py_file.name} の出力を {md_path.name} に反映しました。")
+# Markdown に追記
+with open(md_path, "a") as f:
+    f.write("\n---\n\n### 実行結果\n\n```text\n")
+    f.write(result)
+    f.write("```\n")
