@@ -5,6 +5,8 @@ on:
     paths:
       - 'snippets/*.py'
 
+  workflow_call:
+
 jobs:
   inject-snippet:
     runs-on: ubuntu-latest
