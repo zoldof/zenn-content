@@ -2,6 +2,9 @@
 name: Call Inject Snippet
 
 on:
+  push:
+    paths:
+      - 'snippets/*.py'
   workflow_dispatch:
 
 jobs:
