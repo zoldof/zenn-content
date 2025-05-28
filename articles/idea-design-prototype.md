@@ -1,7 +1,7 @@
 ---
 title: デザイン思考でプロトタイプを楽しもう！すぐ試すアイデアのカタチ
 emoji: 🎨
-type : articles
+type : idea
 tags: [初心者向け, デザイン, 思考法, やってみた, メモ]
 published: true
 published_at: 2025-07-12 21:00
