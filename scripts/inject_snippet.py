@@ -5,7 +5,7 @@ import sys
 
 basename = sys.argv[1]
 md_path = Path(sys.argv[2])
-base_stem = basename.stem.split('_')[0]
+base_stem = basename.split('_')[0]
 
 '''
 # 環境変数からMarkdownファイルのパスを取得
