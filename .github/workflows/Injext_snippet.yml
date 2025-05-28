@@ -25,7 +25,7 @@ jobs:
 
       - name: Inject Python Snippet
         run: |
-          python scripts/inject_snippet.py "$TARGET_MD"
+          python scripts/inject_snippet.py "$BASENAME" "$TARGET_MD"
 
       - name: Execute and inject result
         run: |
