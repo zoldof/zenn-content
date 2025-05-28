@@ -10,7 +10,7 @@ published: false      # ← 下書き状態にするために「false」
 
 ```python
 def main(name):
-    return f"ようこそ、{name}さん。今日もいいコード日和ですね。 "
+    return f"ようこそ、{name}さん。今日もいいコード日和"
 ```
 
 ---
@@ -18,7 +18,7 @@ def main(name):
 # 入力
 
 ```hello_01_in
-太郎
+太
 ```
 
 ---
@@ -26,5 +26,5 @@ def main(name):
 # 実行結果
 
 ```hello_01_out
-ようこそ、太郎さん。今日もいいコード日和ですね。
+ようこそ、太郎さん。今日もいいコード
 ```
