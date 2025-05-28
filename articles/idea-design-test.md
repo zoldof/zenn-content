@@ -1,6 +1,7 @@
 ---
 title: 「うまくいかない」が宝物になるとき 〜デザイン思考のTestって？〜
 emoji: 🧪
+type: articles
 tags: ["デザイン思考", "テスト", "ユーザーテスト", "フィードバック", "失敗から学ぶ"]
 publised : false
 publishDate: 2026-05-28T00:00:00+09:00
