@@ -18,7 +18,7 @@ jobs:
         run: |
           LATEST_PY=$(ls -t snippets/*.py | head -n 1)
           BASENAME=$(basename "$LATEST_PY" .py)
-          TARGET_MD="articles/tech_algo_${BASENAME%%_*}.md"
+          TARGET_MD="articles/tech-algo-${BASENAME%%_*}.md"
           echo "LATEST_PY=$LATEST_PY" >> $GITHUB_ENV
           echo "BASENAME=$BASENAME" >> $GITHUB_ENV
           echo "TARGET_MD=$TARGET_MD" >> $GITHUB_ENV
