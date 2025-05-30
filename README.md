@@ -9,5 +9,5 @@ on:
 
 jobs:
   inject:
-    uses: zoldof/zenn-content/.github/workflows/Injext-snippet.yml@main
+    uses: zoldof/zenn-content/.github/workflows/injext-snippet.yml@main
 ```
