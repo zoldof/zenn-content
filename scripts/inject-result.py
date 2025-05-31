@@ -48,7 +48,7 @@ def replace_multiple_blocks(md_text, replacement_dict):
     return re.sub(pattern, replacer, md_text, flags=re.DOTALL)
 
 replacements = {
-    input_block_id: inputs[basename],
+    input_block_id: "\n".join(inputs[basename]),
     output_block_id: output.getvalue()
 }
 md_text = md_path.read_text(encoding="utf-8")
