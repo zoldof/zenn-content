@@ -12,7 +12,7 @@ output_block_id = f"{basename}_out"
 
 inputs = {
     "hello_01": ["太郎"],
-    "time_calc_01": ["10:00:00", "13:00:00"],
+    "time-calc_01": ["10:00:00", "13:00:00"],
 }
 #input = "太郎"
 # 出力を捕捉するための設定
