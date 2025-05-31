@@ -20,7 +20,7 @@ jobs:
           BASENAME=$(basename "$LATEST_PY" .py)
 
           if [ -f snippet_map.json ]; then
-            TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' target_md-map.json)
+            TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' mappings/target_md-map.json)
           fi
 
           if [ -z "$TARGET_MD" ]; then
