@@ -10,7 +10,11 @@ py_path = Path(sys.argv[3])
 input_block_id = f"{basename}_in"
 output_block_id = f"{basename}_out"
 
-input = "太郎"
+inputs = {
+    "hello_01": ["太郎"],
+    "time_calc_01": ["10:00:00", "13:00:00"],
+}
+#input = "太郎"
 # 出力を捕捉するための設定
 output = StringIO()
 original_stdout = sys.stdout
@@ -23,7 +27,7 @@ try:
         exec(code, namespace)
 
     if "main" in namespace:
-        result = namespace["main"](input)
+        result = namespace["main"](*inputs[basename])
         print(result)
     else:
         print("main 関数が見つかりません。")
