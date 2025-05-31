@@ -36,7 +36,7 @@ finally:
     sys.stdout = original_stdout
 
 def replace_multiple_blocks(md_text, replacement_dict):
-    pattern = r"```(?P<block_id>[^\n]+)\n(.*?)\n```"
+    pattern = r"```(?P<block_id>[^\n]+)\n(.*?)\n?```"
 
     def replacer(match):
         block_id = match.group("block_id")
