@@ -19,12 +19,10 @@ jobs:
           LATEST_PY=$(ls -t snippets/*.py | head -n 1)
           BASENAME=$(basename "$LATEST_PY" .py)
 
-          # jq を使って JSON から対応 md を取得（なければ既存規則で推定）
           if [ -f snippet_map.json ]; then
             TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' target_md-map.json)
           fi
 
-          # マッピングがなかった場合、従来の命名規則にフォールバック
           if [ -z "$TARGET_MD" ]; then
             TARGET_MD="articles/tech-algo-${BASENAME%%_*}.md"
           fi
