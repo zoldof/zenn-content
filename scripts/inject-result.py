@@ -42,8 +42,7 @@ def replace_multiple_blocks(md_text, replacement_dict):
         block_id = match.group("block_id")
         content = replacement_dict.get(block_id)
         if content is not None:
-            return f"```{block_id}\n{content}\n```"
-            #return f"```{block_id}\n{content.strip()}\n```"
+            return f"```{block_id}\n{content.strip()}\n```"
         return match.group(0)  # 対象外はそのまま残す
 
     return re.sub(pattern, replacer, md_text, flags=re.DOTALL)
