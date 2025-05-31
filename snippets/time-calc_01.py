@@ -1,4 +1,3 @@
-#test
 def parse_time(time_str):
     h, m, s = map(int, time_str.split(":"))
     return h, m, s
