@@ -16,17 +16,12 @@ jobs:
 
       - name: Set target .md from latest .py
         run: |
-          LATEST_PY=$(git log -1 --name-only --pretty=| grep '^snippets/.*\.py$')
+          LATEST_PY=$(git log -1 --name-only --pretty=| grep '^snippets/.*\.py$'| head -n 1)
           BASENAME=$(basename "$LATEST_PY" .py)
-
-          if [ -f snippet_map.json ]; then
-            TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' mappings/target_md-map.json)
-          fi
-
+          TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' mappings/target_md-map.json)
           if [ -z "$TARGET_MD" ]; then
             TARGET_MD="articles/tech-algo-${BASENAME%%_*}.md"
           fi
-
           echo "LATEST_PY=$LATEST_PY" >> $GITHUB_ENV
           echo "BASENAME=$BASENAME" >> $GITHUB_ENV
           echo "TARGET_MD=$TARGET_MD" >> $GITHUB_ENV
