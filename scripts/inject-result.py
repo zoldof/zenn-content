@@ -32,7 +32,6 @@ def execute_and_capture(code_str, namespace, *args):
         exec(code_str, namespace)
         if "measure" in namespace:
             result = namespace["measure"](*args)
-            #result = namespace["measure"](*inputs[basename])
             print(result)
         else:
             print("measure 関数が見つかりません。")
