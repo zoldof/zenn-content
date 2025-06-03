@@ -36,11 +36,11 @@ def load_combined_code(paths):
 def execute_and_capture(code_str, namespace, *args):
     try:
         exec(code_str, namespace)
-        if "measure" in namespace:
-            result = namespace["measure"](*args)
+        if "output" in namespace:
+            result = namespace["output"](*args)
             print(result)
         else:
-            print("measure 関数が見つかりません。")
+            print("output 関数が見つかりません。")
     finally:
         sys.stdout = original_stdout
 
