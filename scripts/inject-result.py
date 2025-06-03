@@ -21,23 +21,25 @@ inputs = {
 # 複数ファイルを順に読み込んで一つのnamespaceで実行する例
 files = [init_path, py_path, measure_path, output_path]
 combined_code = load_combined_code(files)
-namespace = {}
 
 # 出力を捕捉するための設定
 output = StringIO()
 original_stdout = sys.stdout
 sys.stdout = output
 
-try:
-    exec(combined_code, namespace)
-    if "measure" in namespace:
-        result = namespace["measure"](*inputs[basename])
-        print(result)
-    else:
-        print("measure 関数が見つかりません。")
+def execute_and_capture(code_str, namespace, *args):
+    try:
+        exec(code_str, namespace)
+        if "measure" in namespace:
+            result = namespace["measure"](*args)
+            #result = namespace["measure"](*inputs[basename])
+            print(result)
+        else:
+            print("measure 関数が見つかりません。")
+    finally:
+        sys.stdout = original_stdout
 
-finally:
-    sys.stdout = original_stdout
+    return output.getvalue()
 
 def load_combined_code(paths):
     combined = ""
@@ -58,10 +60,11 @@ def replace_multiple_blocks(md_text, replacement_dict):
 
     return re.sub(pattern, replacer, md_text, flags=re.DOTALL)
 
-replacements = {
-    input_block_id: "\n".join(inputs[basename]),
-    output_block_id: output.getvalue()
-}
-md_text = md_path.read_text(encoding="utf-8")
-md_text = replace_multiple_blocks(md_text, replacements)
-md_path.write_text(md_text, encoding="utf-8")
+if __name__ == "__main__":
+    replacements = {
+        input_block_id: "\n".join(inputs[basename]),
+        output_block_id: execute_and_capture(combined_code, {}, *inputs[basename])
+    }
+    md_text = md_path.read_text(encoding="utf-8")
+    md_text = replace_multiple_blocks(md_text, replacements)
+    md_path.write_text(md_text, encoding="utf-8")
