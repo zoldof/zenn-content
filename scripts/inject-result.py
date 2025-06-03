@@ -26,6 +26,13 @@ output = StringIO()
 original_stdout = sys.stdout
 sys.stdout = output
 
+def load_combined_code(paths):
+    combined = ""
+    for path in paths:
+        with open(path, encoding="utf-8") as f:
+            combined += f.read() + "\n"
+    return combined
+
 def execute_and_capture(code_str, namespace, *args):
     try:
         exec(code_str, namespace)
@@ -38,13 +45,6 @@ def execute_and_capture(code_str, namespace, *args):
         sys.stdout = original_stdout
 
     return output.getvalue()
-
-def load_combined_code(paths):
-    combined = ""
-    for path in paths:
-        with open(path, encoding="utf-8") as f:
-            combined += f.read() + "\n"
-    return combined
 
 def replace_multiple_blocks(md_text, replacement_dict):
     pattern = r"```(?P<block_id>[^\n]+)\n(.*?)\n?```"
