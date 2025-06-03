@@ -18,9 +18,8 @@ inputs = {
     "time-calc_01": ["10:00:00", "13:00:00"],
 }
 
-# 複数ファイルを順に読み込んで一つのnamespaceで実行する例
+# 複数ファイルを順に読み込むための準備
 files = [init_path, py_path, measure_path, output_path]
-combined_code = load_combined_code(files)
 
 # 出力を捕捉するための設定
 output = StringIO()
@@ -60,6 +59,7 @@ def replace_multiple_blocks(md_text, replacement_dict):
     return re.sub(pattern, replacer, md_text, flags=re.DOTALL)
 
 if __name__ == "__main__":
+    combined_code = load_combined_code(files)
     replacements = {
         input_block_id: "\n".join(inputs[basename]),
         output_block_id: execute_and_capture(combined_code, {}, *inputs[basename])
