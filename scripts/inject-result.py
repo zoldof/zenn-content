@@ -6,7 +6,10 @@ import re
 
 basename = sys.argv[1]
 md_path = Path(sys.argv[2])
+init_path = Path("scripts/init.py")
 py_path = Path(sys.argv[3])
+measure_path = Path("scripts/measure.py")
+output_path = Path("scripts/output.py")
 input_block_id = f"{basename}_in"
 output_block_id = f"{basename}_out"
 
@@ -14,26 +17,34 @@ inputs = {
     "hello_01": ["太郎"],
     "time-calc_01": ["10:00:00", "13:00:00"],
 }
-#input = "太郎"
+
+# 複数ファイルを順に読み込んで一つのnamespaceで実行する例
+files = [init_path, py_path, measure_path, output_path]
+combined_code = load_combined_code(files)
+namespace = {}
+
 # 出力を捕捉するための設定
 output = StringIO()
 original_stdout = sys.stdout
 sys.stdout = output
 
 try:
-    namespace = {}
-    with open(py_path, encoding="utf-8") as f:
-        code = f.read()
-        exec(code, namespace)
-
-    if "main" in namespace:
-        result = namespace["main"](*inputs[basename])
+    exec(combined_code, namespace)
+    if "measure" in namespace:
+        result = namespace["measure"](*inputs[basename])
         print(result)
     else:
-        print("main 関数が見つかりません。")
+        print("measure 関数が見つかりません。")
 
 finally:
     sys.stdout = original_stdout
+
+def load_combined_code(paths):
+    combined = ""
+    for path in paths:
+        with open(path, encoding="utf-8") as f:
+            combined += f.read() + "\n"
+    return combined
 
 def replace_multiple_blocks(md_text, replacement_dict):
     pattern = r"```(?P<block_id>[^\n]+)\n(.*?)\n?```"
