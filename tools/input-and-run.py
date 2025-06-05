@@ -19,9 +19,8 @@ def parse_time_input(input_str):
 def validate_start_end(start_str, end_str):
     if start_str == end_str:
         raise ValueError("開始時刻と終了時刻が同じです。異なる時刻を入力してください。")
-
-if __name__ == "__main__": 
     
+def input_and_run():
     # ▼ 時刻差分のアルゴリズム
     try:
         print("開始時刻を入力してください（hh:mm:ss）: ")
@@ -36,12 +35,16 @@ if __name__ == "__main__":
         print("→ 入力は正常です。")
     except ValueError as ve:
         print("エラー:", ve)
+        return
     except EOFError:
         print("入力が終了されました（EOF）。プログラムを終了します。")
+        return
     except KeyboardInterrupt:
         print("\n入力がキャンセルされました（Ctrl+C）。プログラムを終了します。")
+        return
     except Exception as e:
         print("予期しないエラーが発生しました:", e)
+        return
         
     args = [start, end]
     
@@ -51,3 +54,6 @@ if __name__ == "__main__":
     # ▼ 共通の実行部分
     print("\n--- 出力確認 ---")
     print(f"{to_md_output(*args)}")
+    
+if __name__ == "__main__": 
+    input_and_run()
