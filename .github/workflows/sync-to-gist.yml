@@ -9,9 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+          
       - name: Update Gist
         run: |
-          LATEST_PY=$(find tools -name '*.py' -printf '%T@ %p\n' | sort -nr | cut -d' ' -f2- | head -n1)
+          LATEST_PY=$(git diff --name-only HEAD^ HEAD | grep '^tools/.*\.py$')
           CONTENT=$(jq -Rs . < $LATEST_PY)
           curl -X PATCH \
             -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
