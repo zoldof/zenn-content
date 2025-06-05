@@ -1,4 +1,3 @@
-#
 # ▼ 時刻差分のアルゴリズムの入力エラーチェック関数_1
 def parse_time_input(input_str):
     parts = input_str.split(":")
