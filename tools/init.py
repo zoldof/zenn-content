@@ -1,4 +1,3 @@
-#test
 #モジュール
 import time
 import tracemalloc
