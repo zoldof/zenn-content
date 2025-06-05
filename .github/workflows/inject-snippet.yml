@@ -38,7 +38,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add $TARGET_MD
+          git add "$TARGET_MD"
           git diff --cached --quiet || git commit -m "Auto update article with new snippet"
           git push
           
