@@ -17,16 +17,22 @@ jobs:
           LATEST_PY=$(git diff --name-only HEAD^ HEAD | grep '^tools/.*\.py$')
           BASENAME=$(basename "$LATEST_PY")
           CONTENT=$(jq -Rs . < "$LATEST_PY")
-
+         
           RESPONSE=$(curl -s -w "%{http_code}" -X PATCH \
             -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
             -d "{\"files\": {\"$BASENAME\": {\"content\": $CONTENT}}}" \
             https://api.github.com/gists/b69f770dbf52120e085b048cf0c66054)
 
+          echo "BASENAME=$BASENAME" >> $GITHUB_ENV
+          echo "RESPONSE=$RESPONSE" >> $GITHUB_ENV
+            
+      - name: Gist update
+        run: |
           HTTP_STATUS="${RESPONSE: -3}"
           if [ "$HTTP_STATUS" = "200" ]; then
             echo "Gist sync succeeded for $BASENAME"
             git config user.name "github-actions"
             git config user.email "github-actions@github.com"
+            git add "$BASENAME"
             git commit -m "Update $BASENAME (Gist sync completed)"
           fi
