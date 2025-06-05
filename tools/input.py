@@ -24,9 +24,16 @@ if __name__ == "__main__":
     
     # ▼ 時刻差分のアルゴリズム
     try:
-        start = parse_time_input(input("開始時刻を入力してください（hh:mm:ss）: "))
-        end = parse_time_input(input("終了時刻を入力してください（hh:mm:ss）: "))
+        print("開始時刻を入力してください（hh:mm:ss）: ")
+        start = parse_time_input(input())
+        print("終了時刻を入力してください（hh:mm:ss）: ")
+        end = parse_time_input(input())
         validate_start_end(start, end)
+        
+        print("\n--- 入力確認 ---")
+        print(f"開始時刻: {start}")
+        print(f"終了時刻: {end}")
+        print("→ 入力は正常です。")
     except ValueError as ve:
         print("エラー:", ve)
     except EOFError:
@@ -42,4 +49,5 @@ if __name__ == "__main__":
     # args = date
 
     # ▼ 共通の実行部分
-    print_result(output(*args))
+    print("\n--- 出力確認 ---")
+    print(f"{to_md_output(*args)}")
