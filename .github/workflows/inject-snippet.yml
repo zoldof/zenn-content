@@ -16,7 +16,8 @@ jobs:
 
       - name: Set target .md from latest .py
         run: |
-          CHANGED_FILE=$(jq -r '.commits[] | (.added[]?, .modified[]?) | select(test("^snippets/.*\\.py$"))' "$GITHUB_EVENT_PATH")
+          git fetch --deepen=1
+          CHANGED_FILE=$(git diff --name-only HEAD^ HEAD | grep '^snippets/.*\.py$')
           echo "CHANGED_FILE=$CHANGED_FILE"
           LATEST_PY=$(find snippets -name '*.py' -printf '%T@ %p\n' | sort -nr | cut -d' ' -f2- | head -n1)
           BASENAME=$(basename "$LATEST_PY" .py)
