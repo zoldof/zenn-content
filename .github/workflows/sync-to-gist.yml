@@ -23,11 +23,6 @@ jobs:
             -d "{\"files\": {\"$BASENAME\": {\"content\": $CONTENT}}}" \
             https://api.github.com/gists/b69f770dbf52120e085b048cf0c66054)
 
-          echo "BASENAME=$BASENAME" >> $GITHUB_ENV
-          echo "RESPONSE=$RESPONSE" >> $GITHUB_ENV
-            
-      - name: Gist update
-        run: |
           HTTP_STATUS="${RESPONSE: -3}"
           if [ "$HTTP_STATUS" = "200" ]; then
             echo "Gist sync succeeded for $BASENAME"
