@@ -1,0 +1,17 @@
+name: Sync file to Gist
+on:
+  push:
+    paths:
+      - 'tools/init.py'
+
+jobs:
+  gist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Update Gist
+        run: |
+          curl -X PATCH \
+            -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
+            -d '{"files": {"init.py": {"content": "'"$(cat tools/init.py)"'"}}}' \
+            https://api.github.com/gists/b69f770dbf52120e085b048cf0c66054
