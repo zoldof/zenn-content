@@ -1,4 +1,3 @@
-#
 def to_md_output(*arg):
     result = measure(*arg)
     data = json.loads(result)
