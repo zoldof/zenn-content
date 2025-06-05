@@ -14,6 +14,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Debug LATEST_PY content
+        run: |
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "Files changed in this commit:"
+          git diff-tree --no-commit-id --name-only -r $GITHUB_SHA
+          echo "Filtered Python snippet files:"
+          git diff-tree --no-commit-id --name-only -r $GITHUB_SHA | grep '^snippets/.*\.py$' || echo "(none)"
+          echo "LATEST_PY=$LATEST_PY"
+
       - name: Set target .md from latest .py
         run: |
           echo "GITHUB_SHA=$GITHUB_SHA"
