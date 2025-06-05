@@ -13,10 +13,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
 
       - name: Set target .md from latest .py
         run: |
-          git fetch --deepen=1
           LATEST_PY=$(git diff --name-only HEAD^ HEAD | grep '^snippets/.*\.py$')
           BASENAME=$(basename "$LATEST_PY" .py)
           TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' mappings/target_md-map.json)
