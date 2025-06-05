@@ -28,6 +28,6 @@ jobs:
             echo "Gist sync succeeded for $BASENAME"
             git config user.name "github-actions"
             git config user.email "github-actions@github.com"
-            git add "$BASENAME"
+            git add "$LATEST_PY"
             git commit -m "Update $BASENAME (Gist sync completed)"
           fi
