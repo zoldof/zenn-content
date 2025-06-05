@@ -25,8 +25,11 @@ jobs:
 
       - name: Set target .md from latest .py
         run: |
-          echo "GITHUB_SHA=$GITHUB_SHA"
-          LATEST_PY=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA | grep '^snippets/.*\.py$')
+          echo "From: ${{ github.event.before }}"
+          echo "To:   ${{ github.sha }}"
+          CHANGED_PY_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^snippets/.*\.py$' || true)
+          echo "CHANGED_PY_FILES=$CHANGED_PY_FILES"
+          LATEST_PY=$(echo "$CHANGED_PY_FILES" | head -n 1)
           echo "LATEST_PY=$LATEST_PY"
           BASENAME=$(basename "$LATEST_PY" .py)
           TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' mappings/target_md-map.json)
