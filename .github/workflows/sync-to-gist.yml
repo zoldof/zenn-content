@@ -12,7 +12,7 @@ jobs:
         with:
           fetch-depth: 2
           
-      - name: Update Gist 1
+      - name: Init
         run: |
           LATEST_PY=$(git diff --name-only HEAD^ HEAD | grep '^tools/.*\.py$')
           BASENAME=$(basename "$LATEST_PY")
@@ -24,7 +24,7 @@ jobs:
           echo "HIST_FILE=$HIST_FILE" >> $GITHUB_ENV
           echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
 
-      - name: Update Gist 2
+      - name: Excuse
         run: |
           curl -s -w "%{http_code}" -X PATCH \
             -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
@@ -32,7 +32,7 @@ jobs:
             https://api.github.com/gists/b69f770dbf52120e085b048cf0c66054
           echo "$TIMESTAMP - Updated: $BASENAME" >> "$HIST_FILE"
 
-      - name: Update Gist 3
+      - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
