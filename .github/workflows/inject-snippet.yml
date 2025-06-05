@@ -18,6 +18,7 @@ jobs:
         run: |
           echo "GITHUB_SHA=$GITHUB_SHA"
           LATEST_PY=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA | grep '^snippets/.*\.py$')
+          echo "LATEST_PY=$LATEST_PY"
           BASENAME=$(basename "$LATEST_PY" .py)
           TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' mappings/target_md-map.json)
           if [ -z "$TARGET_MD" ]; then
