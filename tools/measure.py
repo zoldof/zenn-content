@@ -1,4 +1,3 @@
-#
 def measure(*args):
     tracemalloc.start()
     start_time = time.perf_counter()
