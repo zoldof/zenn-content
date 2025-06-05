@@ -13,7 +13,7 @@ if __name__ == "__main__":
     '''
     
     # ▼ 並べ替えのアルゴリズム
-    # args = [date]
+    # args = date
 
     # ▼ 共通の実行部分
     print_result(output(*args))
