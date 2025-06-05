@@ -16,7 +16,7 @@ jobs:
 
       - name: Set target .md from latest .py
         run: |
-          LATEST_PY=$(find snippets -name '*.py' -printf '%T@ %p\n' | sort -nr | cut -d' ' -f2- | head -n1)
+          LATEST_PY=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA | grep '^snippets/.*\.py$')
           BASENAME=$(basename "$LATEST_PY" .py)
           TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' mappings/target_md-map.json)
           if [ -z "$TARGET_MD" ]; then
