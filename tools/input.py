@@ -1,4 +1,5 @@
-if __name__ == "__main__":    
+if __name__ == "__main__": 
+    
     # ▼ 時刻差分のアルゴリズム
     try:
         start = input("開始時刻を入力してください（hh:mm:ss）: ")
@@ -8,9 +9,6 @@ if __name__ == "__main__":
         print("エラー:", ve)
     except Exception:
         print("入力形式が正しくありません。hh:mm:ss で入力してください。")
-    '''
-    この記号で囲うとコメントアウトできます
-    '''
     
     # ▼ 並べ替えのアルゴリズム
     # args = date
