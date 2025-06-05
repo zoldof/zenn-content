@@ -29,5 +29,9 @@ jobs:
             git config user.name "github-actions"
             git config user.email "github-actions@github.com"
             git add "$LATEST_PY"
-            git commit -m "Update $BASENAME (Gist sync completed)"
+            if git diff --cached --quiet; then
+              echo "No changes to commit."
+            else
+              git commit -m "Update $BASENAME (Gist sync completed)"
+            fi
           fi
