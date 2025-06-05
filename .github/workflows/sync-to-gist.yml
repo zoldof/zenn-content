@@ -23,6 +23,9 @@ jobs:
             -d "{\"files\": {\"$BASENAME\": {\"content\": $CONTENT}}}" \
             https://api.github.com/gists/b69f770dbf52120e085b048cf0c66054)
 
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
           HTTP_STATUS="${RESPONSE: -3}"
           if [ "$HTTP_STATUS" = "200" ]; then
             echo "Gist sync succeeded for $BASENAME"
