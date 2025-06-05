@@ -17,9 +17,7 @@ jobs:
       - name: Set target .md from latest .py
         run: |
           git fetch --deepen=1
-          CHANGED_FILE=$(git diff --name-only HEAD^ HEAD | grep '^snippets/.*\.py$')
-          echo "CHANGED_FILE=$CHANGED_FILE"
-          LATEST_PY=$(find snippets -name '*.py' -printf '%T@ %p\n' | sort -nr | cut -d' ' -f2- | head -n1)
+          LATEST_PY=$(git diff --name-only HEAD^ HEAD | grep '^snippets/.*\.py$')
           BASENAME=$(basename "$LATEST_PY" .py)
           TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' mappings/target_md-map.json)
           if [ -z "$TARGET_MD" ]; then
