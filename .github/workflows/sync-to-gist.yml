@@ -15,6 +15,7 @@ jobs:
       - name: Update Gist
         run: |
           LATEST_PY=$(git diff --name-only HEAD^ HEAD | grep '^tools/.*\.py$')
+          BASENAME=$(basename "$LATEST_PY")
           CONTENT=$(jq -Rs . < $LATEST_PY)
           curl -X PATCH \
             -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
