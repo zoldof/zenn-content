@@ -24,7 +24,7 @@ jobs:
           echo "HIST_FILE=$HIST_FILE" >> $GITHUB_ENV
           echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
 
-      - name: Excute
+      - name: Execute
         run: |
           curl -s -w "%{http_code}" -X PATCH \
             -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
