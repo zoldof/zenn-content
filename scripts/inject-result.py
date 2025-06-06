@@ -6,10 +6,10 @@ import re
 
 basename = sys.argv[1]
 md_path = Path(sys.argv[2])
-init_path = Path("scripts/init.py")
+init_path = Path("tools/init.py")
 py_path = Path(sys.argv[3])
-measure_path = Path("scripts/measure.py")
-output_path = Path("scripts/output.py")
+measure_path = Path("tools/measure.py")
+output_path = Path("tools/output.py")
 input_block_id = f"{basename}_in"
 output_block_id = f"{basename}_out"
 
