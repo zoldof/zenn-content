@@ -19,10 +19,6 @@ jobs:
       - name: Set target .md from latest .py
         run: |
           LATEST_PY=$(git diff --name-only HEAD^ HEAD | grep '^snippets/.*\.py$')
-          [ -z "$LATEST_PY" ] && {
-            echo "該当ファイルは削除済みのため、処理を終了します。"
-            exit 0
-          }
           BASENAME=$(basename "$LATEST_PY" .py)
           TARGET_MD=$(jq -r --arg key "$BASENAME" '.[$key] // empty' mappings/target_md-map.json)
           if [ -z "$TARGET_MD" ]; then
