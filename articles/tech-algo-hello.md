@@ -10,7 +10,7 @@ published: false      # ← 下書き状態にするために「false」
 
 ```python
 def main(name):
-    return f"ようこそ、{name}さん。今日もいいコード日和ですね。 "
+    return f"ようこそ、{name}さん。今日もいいコード日和ですね。"
 ```
 
 ---
@@ -27,7 +27,7 @@ def main(name):
 
 ```hello_01_out
 実行時間　　　　: 0.000003 秒
-メモリ（現時点）: 108 bytes
-メモリ（ピーク）: 108 bytes
+メモリ（現時点）: 106 bytes
+メモリ（ピーク）: 106 bytes
 実行結果　　　　: ようこそ、太郎さん。今日もいいコード日和ですね。
 ```
