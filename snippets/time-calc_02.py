@@ -1,4 +1,4 @@
-# 標準
+#標準
 def calc_datetime(start_str, end_str):
     fmt = "%H:%M:%S"
     start = datetime.strptime(start_str, fmt)
@@ -8,7 +8,7 @@ def calc_datetime(start_str, end_str):
         diff += timedelta(days=1)
     return str(diff)  # 例: '0:30:00'
 
-# 拡張
+#拡張
 def calc_dateutil(start_str, end_str, tz_str='UTC'):
     tz = pytz.timezone(tz_str)
     start = tz.localize(parser.parse(start_str))
