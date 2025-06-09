@@ -6,6 +6,8 @@ def to_seconds(h, m, s):
     return h * 3600 + m * 60 + s
 
 def from_seconds(total_seconds):
+    if total_seconds < 0:
+        total_seconds += 24 * 3600
     h = total_seconds // 3600
     total_seconds %= 3600
     m = total_seconds // 60
@@ -22,9 +24,5 @@ def main(start, end):
     sec1 = to_seconds(h1, m1, s1)
     sec2 = to_seconds(h2, m2, s2)
 
-    if sec2 < sec1:
-        sec2 += 24 * 3600  # 翌日とみなす
-
-    diff = sec2 - sec1
     h, m, s = from_seconds(diff)
     return format_time(h, m, s)
