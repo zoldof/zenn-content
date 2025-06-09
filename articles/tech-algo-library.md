@@ -57,6 +57,14 @@ published_at: 2025-06-11 12:00
 
 # 📚️ どのライブラリを選べばいい？
 
+```mermaid
+%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'30px'}}}%%
+flowchart LR
+  A[使用環境は組み込みデバイス？] -->|はい| B[極限環境の可能性あり<br>（自作推奨）]
+  A -->|いいえ| C[メモリ予算やCPU制限は厳しい？]
+  C -->|はい| D[ライブラリ選定要注意]
+  C -->|いいえ| E[通常のPC / Web / モバイル<br>→ 標準ライブラリ使用OK]
+```
 ┌──────────────────────────────┐
 │ 使用環境は組み込みデバイス？ │─── はい ─→ 極限環境の可能性あり（自作推奨）
 └──────────────┬─────────────┘
