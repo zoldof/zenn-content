@@ -19,5 +19,5 @@ def main(start, end):
     h2, m2, s2 = parse_time(end)
     sec1 = to_seconds(h1, m1, s1)
     sec2 = to_seconds(h2, m2, s2)
-    diff = end - start
+    diff = sec2 - sec1
     return from_seconds(diff)
