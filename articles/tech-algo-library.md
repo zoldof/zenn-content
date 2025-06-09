@@ -58,20 +58,13 @@ published_at: 2025-06-11 12:00
 # 📚️ どのライブラリを選べばいい？
 
 ```mermaid
-%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'30px'}}}%%
+%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'15px'}}}%%
 flowchart LR
   A[使用環境は組み込みデバイス？] -->|はい| B[極限環境の可能性あり<br>（自作推奨）]
   A -->|いいえ| C[メモリ予算やCPU制限は厳しい？]
   C -->|はい| D[ライブラリ選定要注意]
   C -->|いいえ| E[通常のPC / Web / モバイル<br>→ 標準ライブラリ使用OK]
 ```
-┌──────────────────────────────┐
-│ 使用環境は組み込みデバイス？ │─── はい ─→ 極限環境の可能性あり（自作推奨）
-└──────────────┬─────────────┘
-               ↓ いいえ
-   メモリ予算やCPU制限は厳しい？ → はい → ライブラリ選定要注意
-               ↓ いいえ
-      通常のPC / Web / モバイル → 安全に標準ライブラリ使用OK
 
 ✅ 極限環境の定義（組込み向け）
 | 種類           | 内容・例                                |
