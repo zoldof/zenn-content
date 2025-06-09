@@ -6,7 +6,7 @@
 import time, tracemalloc
 
 ##各種アルゴリズム共通簡略化
-#from datetime import timedelta
+###from datetime import timedelta
 
 ##出力用
 import json
