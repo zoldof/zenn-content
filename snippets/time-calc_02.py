@@ -1,4 +1,4 @@
-##共通の関数
+#共通の関数
 def from_seconds(total_seconds):
     if total_seconds < 0:
         total_seconds += 24 * 3600
