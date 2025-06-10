@@ -8,6 +8,7 @@ def to_seconds(h, m, s):
 def from_seconds(total_seconds):
     if total_seconds < 0:
         total_seconds += 24 * 3600
+    total_seconds = int(total_seconds)
     h = total_seconds // 3600
     total_seconds %= 3600
     m = total_seconds // 60
