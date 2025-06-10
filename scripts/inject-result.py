@@ -16,7 +16,6 @@ output_block_id = f"{basename}_out"
 inputs = {
     "hello_01": ["太郎"],
     "time-calc_01": ["10:00:00", "13:00:00"],
-    "time-calc_02": [""],
 }
 
 # 複数ファイルを順に読み込むための準備
@@ -60,11 +59,12 @@ def replace_multiple_blocks(md_text, replacement_dict):
     return re.sub(pattern, replacer, md_text, flags=re.DOTALL)
 
 if __name__ == "__main__":
-    combined_code = load_combined_code(files)
-    replacements = {
-        input_block_id: "\n".join(inputs[basename]),
-        output_block_id: execute_and_capture(combined_code, {}, *inputs[basename])
-    }
-    md_text = md_path.read_text(encoding="utf-8")
-    md_text = replace_multiple_blocks(md_text, replacements)
-    md_path.write_text(md_text, encoding="utf-8")
+    if basename in inputs and inputs[basename]:
+        combined_code = load_combined_code(files)
+        replacements = {
+            input_block_id: "\n".join(inputs[basename]),
+            output_block_id: execute_and_capture(combined_code, {}, *inputs[basename])
+        }
+        md_text = md_path.read_text(encoding="utf-8")
+        md_text = replace_multiple_blocks(md_text, replacements)
+        md_path.write_text(md_text, encoding="utf-8")
