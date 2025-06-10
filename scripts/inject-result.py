@@ -16,6 +16,7 @@ output_block_id = f"{basename}_out"
 inputs = {
     "hello_01": ["太郎"],
     "time-calc_01": ["10:00:00", "13:00:00"],
+    "time-calc_02": [""],
 }
 
 # 複数ファイルを順に読み込むための準備
