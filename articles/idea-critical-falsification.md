@@ -53,7 +53,7 @@ published_at: 2025-08-16 21:00
 とかね。
 
 このとき、反論を「間違ってる」とか「攻撃」として捉えないで、  
-**「自分の考えの穴を見つけてくれる存在」**って思えると、ちょっと気がラクになる。
+**「自分の考えの穴を見つけてくれる存在」** って思えると、ちょっと気がラクになる。
 
 ```mermaid
 %%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'10px'}}}%%
