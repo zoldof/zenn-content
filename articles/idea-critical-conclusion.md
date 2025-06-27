@@ -62,6 +62,7 @@ published_at: 2025-08-23 21:00
 
 ### 🔹 図や疑似言語で理解を深める
 ```mermaid
+%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'10px'}}}%%
 flowchart TD
   A[出した結論] --> B{根拠は明確？}
   B -- はい --> C{他の選択肢はある？}
