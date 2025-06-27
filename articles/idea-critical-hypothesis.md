@@ -114,6 +114,7 @@ print("結論:", 結論)
 ## フローチャートで見てみよう
 
 ```mermaid
+%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'10px'}}}%%
 graph TD
     A[モヤモヤする] --> B[仮説を立てる]
     B --> C[どうやって検証できる？を考える]
