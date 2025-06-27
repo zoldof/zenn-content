@@ -18,7 +18,7 @@ published_at: 2025-08-16 21:00
 でも、その言葉を信じきっていると、夜型の人の方が集中できるって話をスルーしちゃうかもしれない。
 
 反証の検討っていうのは、  
-**「この考え方、もしかして間違ってるかも？」**って  
+**「この考え方、もしかして間違ってるかも？」** って  
 自分から疑ってみること。
 
 つまり、「あえて反対側を見てみる」ってことなんだ。
@@ -51,6 +51,7 @@ published_at: 2025-08-16 21:00
 **「自分の考えの穴を見つけてくれる存在」**って思えると、ちょっと気がラクになる。
 
 ```mermaid
+%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'10px'}}}%%
 flowchart TD
   A[自分の主張を考える] --> B{反対意見を想像する}
   B -->|見つけた| C[その意見の正しさを考える]
