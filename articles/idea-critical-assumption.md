@@ -4,7 +4,7 @@ emoji: 🪷
 type: idea
 tags: ["思考法", "config", "verification", "初心者", "考え方"]
 published: true
-published_at: 2025-08-02 21:00
+published_at: 2025-08-09 21:00
 ---
 
 前提とか仮定って言われても、ちょっと堅い感じするけど、  
