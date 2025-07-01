@@ -485,3 +485,11 @@ published_at: 2025-07-01 18:00
 ## 回転体
 ［円錐，円柱，半球］を組み合わせたもの
 - 母線：円柱や円錐の側面を形作る部分の長さのこと
+
+# 宣伝
+- [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zenn.dev/algorithm_math/articles/1631216a6976a9)
+
+# 参考サイト
+- [実用数学技能検定 算数5級](https://www.su-gaku.net/suken/examination/summary/5q)
+- [平成29年告示 中学校学習指導要項 数学](https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/03/18/1387018_004.pdf)
+- [中学校数学・学習サイト](https://math.005net.com)
