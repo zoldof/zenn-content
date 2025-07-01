@@ -3,6 +3,7 @@ title: 中学1年の数学で学ぶアルゴリズムの基礎：シリーズ第
 emoji: 🧮
 type: idea
 tags: ["math", "プログラミング", "AtCoder", "初心者", "アルゴリズム"]
+publication_name: "algorithm_math"
 published: true
 published_at: 2025-07-01 18:00
 ---
