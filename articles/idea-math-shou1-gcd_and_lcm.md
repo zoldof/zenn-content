@@ -33,14 +33,13 @@ $15×3$のブロックがあったとして
 最大公約数を求めるときに使ったブロックを活用する
 $5×1$のブロックが正方形になるように何個も並べると
 横に6個、縦に30個並べることになる
-![](https://storage.googleapis.com/zenn-user-upload/9cd2f01f61c5-20250701.jpg)
-*同様に30段まで続く…*
+![](https://storage.googleapis.com/zenn-user-upload/3ada63bad2b9-20250702.jpg)
 縦の1を基準にすると正方形の1辺は30であると分かる
 この数が最小公倍数である
 
 もともとの$15×3$のブロックで並べれば
 横に2個、縦に10個並べることになる
-![](https://storage.googleapis.com/zenn-user-upload/e64cb19773c6-20250701.jpg)
+![](https://storage.googleapis.com/zenn-user-upload/980cf1f81002-20250702.jpg)
 正方形の1辺は$10×3=30$で$5×1$のブロックと同じ
 すなわち、最大公約数の倍数が最小公倍数になっている
 
