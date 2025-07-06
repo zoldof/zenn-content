@@ -1,4 +1,11 @@
-🌌ClaudeやGPTの便利さの果てに──人間が求めるのは「意味」なのか？
+---
+title: ClaudeやGPTの便利さの果てに──人間が求めるのは「意味」なのか？
+emoji: 🌌
+type: idea
+tags: ["claude", "ai", "chatgpt", "アルゴリズム", "記事"]
+published: true
+published_at: 2025-07-07 21:02
+---
 
 # この記事でわかること
 - なぜ技術記事が乱立するのか？その背景にある“便利さの本能”
@@ -134,6 +141,8 @@ graph TD
 **仮想空間の中で満たされる人生を、想像できますか？**
 
 ## ✔ フレームワーク：文明的「欲求進化」モデル
+```mermaid
+%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'10px'}}}%%
 graph TD
   A(不便の回避) --> B(効率化と便利)
   B --> C(余暇と意味の探求)
@@ -142,6 +151,7 @@ graph TD
   E --> F(仮想世界・意識空間の創造)
   F --> G(存在の問い・目的の再起動)
   G --> B
+```
 → 無限ループに見えるが、その循環自体が「人間らしさ」かもしれない。
 
 ## ✔ まとめ
