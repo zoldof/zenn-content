@@ -13,6 +13,7 @@ published_at: 2025-07-01 18:00
 ②実用数学技能検定で5級を取りたい人
 この記事は、平成29年告示の学習指導要領に則った内容です。
 
+https://zenn.dev/zoldof/scraps/ea70ec179f567c#数学まとめ記事の冒頭補足
 [小学校の算数から学び直しできる記事はこちらです。](https://zenn.dev/algorithm_math/articles/1631216a6976a9)
 
 :::details この記事における四則演算の扱い
