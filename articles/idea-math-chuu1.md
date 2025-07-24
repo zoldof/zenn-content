@@ -332,7 +332,7 @@ published_at: 2025-07-01 18:00
   - 半径：$r$
   - 円周：$l=2πr$
   - 面積：$S=πr^2$
-  - 接線：円周と接しており、半径と垂直な線
+  - 接線：円周と接しており、半径と垂直な線[^1]
   - 接点：円と接線の交点
   - 外接円：図形のすべての点が接点となるような円
   - 内接円：図形のすべての辺が接線となるような円
@@ -411,3 +411,7 @@ published_at: 2025-07-01 18:00
 - [実用数学技能検定 算数5級](https://www.su-gaku.net/suken/examination/summary/5q)
 - [平成29年告示 中学校学習指導要項 数学](https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/03/18/1387018_004.pdf)
 - [中学校数学・学習サイト](https://math.005net.com)
+
+---
+
+[^1]:[なぜ垂直か？](https://curlpingnosiawase.com/three-proof-methods-that-the-angle-of-the-tangent-of-the-circle-is-90-degrees-right-angle-what-is-a-tangent-what-is-the-point-of-contact-between-a-circle-and-a-straight-line-junior-high-school-mathmat)
