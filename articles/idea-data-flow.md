@@ -3,7 +3,7 @@ title: "コンピュータの根幹を辿る旅：ハードウェアから電気
 emoji: 🧮
 type: idea
 tags: ["data", "メモリ", "cpu", "初心者", "歴史"]
-published: true
+published: false
 published_at: 2025-07-28 08:27
 ---
 
