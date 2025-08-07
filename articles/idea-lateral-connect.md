@@ -51,7 +51,8 @@ published_at: 2025-09-27 21:00
 # 試してみよう
 
 ```mermaid
-flowchart TD
+%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'10px'}}}%%
+flowchart LR
     A[ランダムに2つの要素を選ぶ] --> B[無理やり接点を探す]
     B --> C{接点は見つかった？}
     C -- はい --> D[アイデアを具体化する]
