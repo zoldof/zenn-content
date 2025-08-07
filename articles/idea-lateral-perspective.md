@@ -48,7 +48,8 @@ published_at: 2025-09-13 21:00
 
 # エンジニア的視点チェンジの流れ（フローチャート）
 ```mermaid
-flowchart TD
+%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'10px'}}}%%
+flowchart LR
     A[課題を定義] --> B[視点を変える対象を選択]
     B --> C[第三者視点で再評価]
     B --> D[立場逆転で再評価]
