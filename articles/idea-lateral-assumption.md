@@ -52,7 +52,8 @@ published_at: 2025-09-06 21:00
 # 図にしてみると…
 
 ```mermaid
-flowchart TD
+%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'10px'}}}%%
+flowchart LR
     A[やりたいことや悩みがある] --> B[今のやり方や条件を書き出す]
     B --> C{これって当たり前？}
     C -- はい --> D[そのまま続ける]
