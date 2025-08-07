@@ -51,6 +51,7 @@ published_at: 2025-09-20 21:00
 
 # この発想法の手順
 ```mermaid
+%%{init:{'theme':'base','themeVariables':{'primaryColor':'#6A7FAB','primaryTextColor':'#FAFBF9','primaryBorderColor':'#6A7FAB','lineColor':'#6A7FABCC','textColor':'#6A7FABCC','fontSize':'10px'}}}%%
 flowchart TD
   A[ランダムに単語を選ぶ] --> B[無理やり関連づける]
   B --> C[意味を探す・こじつける]
