@@ -45,3 +45,13 @@ def measure(*args):
 
     json_str = json.dumps(result_data, ensure_ascii=False)
     return json_str
+
+#**********
+#output.py
+#**********
+
+def to_md_output(*arg):
+    result = measure(*arg)
+    data = json.loads(result)
+    output = "\n".join(f"{key}: {value}" for key, value in data.items())
+    return output
