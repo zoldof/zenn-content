@@ -316,7 +316,7 @@ published_at: 2025-07-01 18:00
 - 頂点：線分と線分が端で交わる点
 - 中点：線分を二等分する点
 - 辺：頂点を作る線分
-- 垂線：垂直に交わる直線
+- 垂線[^3]：垂直に交わる直線
 - 距離[^2]：ある場所までの道のり
 - 2点間の距離：線分の長さ
 - 点と直線の距離：垂線の長さ
@@ -423,3 +423,4 @@ published_at: 2025-07-01 18:00
 [^1]:[なぜ垂直か？](https://curlpingnosiawase.com/three-proof-methods-that-the-angle-of-the-tangent-of-the-circle-is-90-degrees-right-angle-what-is-a-tangent-what-is-the-point-of-contact-between-a-circle-and-a-straight-line-junior-high-school-mathmat)
 [^2]:問題の出し方にもよるが基本は、ある場所までの最短距離のことを「距離」と呼び、真っ直ぐ向かうのが一番早いので線分である。
 現実的には道のりに障害物があったり、道が飛び飛びであったり、行き止まりであったり、分岐していたり、曲がっていたり、斜めであったり、中継地点があったりするので、それらをふまえた単語として「距離」が用いられる。
+[^3]:作図に使う交点を結ぶ三角形は線対称になるから、垂線は対称の軸でもあり90度で交わる
