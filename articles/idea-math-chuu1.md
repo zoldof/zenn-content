@@ -1,5 +1,5 @@
 ---
-title: 中学1年の数学を整理し直す｜Layer 1
+title: "中学1年の数学を整理し直す｜Layer 1"
 emoji: 🧮
 type: idea
 tags: ["math", "プログラミング", "AtCoder", "初心者", "アルゴリズム"]
