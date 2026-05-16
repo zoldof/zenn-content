@@ -4,7 +4,7 @@ emoji: 🧮
 type: idea
 tags: ["math", "プログラミング", "AtCoder", "初心者", "アルゴリズム"]
 publication_name: "algorithm_math"
-description: 中1数学の基礎を，考え方の構造を意識しながら整理して解説。計算のやり方だけでなく，「なぜその式になるのか」を理解できる内容です。
+description: "中1数学の基礎を，考え方の構造を意識しながら整理して解説。計算のやり方だけでなく，「なぜその式になるのか」を理解できる内容です。"
 published: true
 ---
 
