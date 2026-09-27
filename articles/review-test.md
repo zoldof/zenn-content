@@ -1,3 +1,12 @@
+---
+title: "メンバー用レビューテスト"
+emoji: 🧮
+type: idea
+tags: ["math", "プログラミング", "AtCoder", "初心者", "アルゴリズム"]
+publication_name: "algorithm_math"
+published: false
+---
+
 この記事は下書きのままで保留します。
 Publicationメンバーのレビューテスト用です。
 お試しなので、1人1〜3回まで自由にレビューしてください。
